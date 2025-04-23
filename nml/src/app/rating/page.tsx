@@ -1,7 +1,10 @@
-import dynamic from 'next/dynamic';
-
-const RatingClient = dynamic(() => import('./RatingClient'), { ssr: false });
+import { Suspense } from 'react';
+import RatingClient from './RatingClient';
 
 export default function RatingPage() {
-  return <RatingClient />;
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <RatingClient />
+    </Suspense>
+  );
 }
